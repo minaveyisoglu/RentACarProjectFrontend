@@ -1,0 +1,10 @@
+<ul class="list-group">
+    <li  [class]="getAllCarClass()" routerLink = "/cars">Tüm Arabalar</li>
+    <li (click)="setCurrentCar(car)"
+    routerLink = "/cars/car/{{car.carId}}"
+    *ngFor="let car of cars" 
+    [class]="getCurrentCarClass(car)">
+    {{car.carName}}</li>
+  </ul>
+  
+  <h5 *ngIf="currentCar">{{currentCar.carName}} seçtiniz</h5>

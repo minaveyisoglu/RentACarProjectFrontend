@@ -1,41 +1,41 @@
 import { Component, OnInit } from '@angular/core';
-import { Category } from 'src/app/models/brand';
-import { CategoryService } from 'src/app/services/brand.service';
+import { Brand } from 'src/app/models/brand';
+import { BrandService } from 'src/app/services/brand.service';
 
 @Component({
-  selector: 'app-category',
-  templateUrl: './category.component.html',
-  styleUrls: ['./category.component.css']
+  selector: 'app-brand',
+  templateUrl: './brand.component.html',
+  styleUrls: ['./brand.component.css']
 })
-export class CategoryComponent implements OnInit {
+export class BrandComponent implements OnInit {
 
-  categories : Category[]=[];
-  currentCategory :Category;
-  constructor(private categoryService:CategoryService) { }
+  brands : Brand[]=[];
+  currentBrand :Brand;
+  constructor(private brandService:BrandService) { }
 
   ngOnInit(): void {
-    this.getCategories();
+    this.getBrands();
   }
 
-  getCategories() {
-    this.categoryService.getCategories().subscribe(response=>{
-      this.categories = response.data
+  getBrands() {
+    this.brandService.getBrands().subscribe(response=>{
+      this.brands = response.data
     })   
   }
-  setCurrentCategory(category:Category){
-    this.currentCategory = category;
+  setCurrentBrand(brand:Brand){
+    this.currentBrand = brand;
   }
 
-  getCurrentCategoryClass(category:Category){
-    if(category ==this.currentCategory){
+  getCurrentBrandClass(brand:Brand){
+    if(brand ==this.currentBrand){
       return "list-group-item active"
     }else{
       return "list-group-item"
     }
   }
 
-  getAllCategoryClass(){
-       if(!this.currentCategory){
+  getAllCBrandClass(){
+       if(!this.currentBrand){
         return "list-group-item active"
        }
        else{
